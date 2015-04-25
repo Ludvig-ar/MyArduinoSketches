@@ -1,0 +1,32 @@
+void setup() {
+  // put your setup code here, to run once:
+Serial.begin(9600);
+  pinMode(2, OUTPUT);  // Asignación de las salidas digitales que se conectan a cada segmento del display
+  pinMode(3, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(6, OUTPUT);
+  pinMode(7, OUTPUT);
+  pinMode(8, OUTPUT);
+  pinMode(10, OUTPUT); // Sale el display 1 por el 10
+  pinMode(11, OUTPUT); // Sale el display 2 por el 11
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  int valpoten=analogRead(0)/10;
+  if (valpoten>99) {
+    valpoten=99;
+  }
+  int primdigpot=valpoten/10;
+  int segdigpot=valpoten-(primdigpot*10);
+  Serial.println(valpoten);
+  digitalWrite(11, LOW);
+  digitalWrite(10, HIGH);
+  dibujarnumero(primdigpot);
+  delay(10);
+  digitalWrite(10, LOW);
+  digitalWrite(11, HIGH);
+  dibujarnumero(segdigpot);
+  delay(10);
+}
