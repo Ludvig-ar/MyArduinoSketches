@@ -30,3 +30,57 @@ void loop() {
   dibujarnumero(segdigpot);
   delay(10);
 }
+/*
+  Two Digit Display
+  Funciones relacionadas con el manejo de dos display de siete segmentos de anodo comun
+  Asume segmentos conectados del pin 2 al 8 inclusive, de acuerdo a la relación especificada en la funcion display
+  by Lucila Mortara
+ */
+void dibujarnumero(int num)
+{
+// Dependiendo del numero recibido, se envía a la función display los estados (0 y 1) correspondientes a cada uno de los segmentos
+switch (num){
+    case 0: 
+      display (0,0,0,0,0,0,1);     //escribe 0    common annode
+    break;
+    case 1: 
+      display (1,0,0,1,1,1,1);     //escribe 1
+    break;
+    case 2:
+      display (0,0,1,0,0,1,0);     //escribe 2
+    break;
+    case 3:
+      display (0,0,0,0,1,1,0);     //escribe 3    
+    break;
+    case 4:
+      display (1,0,0,1,1,0,0);     //escribe 4
+    break;
+    case 5:
+      display (0,1,0,0,1,0,0);     //escribe 5
+    break;
+    case 6:
+      display (0,1,0,0,0,0,0);    //escribe 6
+    break;
+    case 7:
+      display (0,0,0,1,1,1,1);    //escribe 7    
+    break;
+    case 8:
+      display (0,0,0,0,0,0,0);    //escribe 8
+    break;
+    case 9:
+      display (0,0,0,1,1,0,0);   //escribe 9
+    break;
+  }
+}
+
+void display (int a, int b, int c, int d, int e, int f, int g)
+// Funcion del display
+{
+  digitalWrite (2,a);   //Se reciben 7 variables y se asignan
+  digitalWrite (3,b);   //a cada una de las salidas
+  digitalWrite (4,c);
+  digitalWrite (5,d);
+  digitalWrite (6,e);
+  digitalWrite (7,f);
+  digitalWrite (8,g);
+}
